@@ -21,3 +21,8 @@ public:
   vector<unsigned> vertexIndicesForCell(GlobalIndexType cellID);
   vector< vector<double> > verticesForCell(GlobalIndexType cellID);
 };
+
+class MeshPtr {
+public:
+  Mesh* operator->();
+};

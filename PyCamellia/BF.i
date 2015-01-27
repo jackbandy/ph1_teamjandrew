@@ -8,3 +8,8 @@
 class BF{
 public:
 };
+
+class BFPtr {
+public:
+  BF* operator->();
+};

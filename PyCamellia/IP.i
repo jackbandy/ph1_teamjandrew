@@ -8,3 +8,8 @@
 class IP{
 public:
 };
+
+class IPPtr {
+public:
+  IP* operator->();
+};
