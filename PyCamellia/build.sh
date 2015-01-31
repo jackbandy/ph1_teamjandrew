@@ -32,13 +32,13 @@ LINK_ALL="-lpython2.7 -L$Trilinos_LIBRARY_DIRS $Trilinos_LIBRARIES_LINK_LINE -L$
 #$CPP -c -Wall -fpic LinearTerm_wrap.cxx $INCLUDE_ALL
 #$CPP -shared LinearTerm_wrap.o -o _LinearTerm.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE IP.i
-#$CPP -c -Wall -fpic IP_wrap.cxx $INCLUDE_ALL
-#$CPP -shared IP_wrap.o -o _IP.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE IP.i
+$CPP -c -Wall -fpic IP_wrap.cxx $INCLUDE_ALL
+$CPP -shared IP_wrap.o -o _IP.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE BF.i
-#$CPP -c -Wall -fpic BF_wrap.cxx $INCLUDE_ALL
-#$CPP -shared BF_wrap.o -o _BF.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE BF.i
+$CPP -c -Wall -fpic BF_wrap.cxx $INCLUDE_ALL
+$CPP -shared BF_wrap.o -o _BF.so $LINK_ALL
 
 #swig -Wall -c++ -python -I$CAMELLIA_INCLUDE SpatialFilter.i
 #$CPP -c -Wall -fpic SpatialFilter_wrap.cxx $INCLUDE_ALL
@@ -52,9 +52,9 @@ LINK_ALL="-lpython2.7 -L$Trilinos_LIBRARY_DIRS $Trilinos_LIBRARIES_LINK_LINE -L$
 #$CPP -c -Wall -fpic RHS_wrap.cxx $INCLUDE_ALL
 #$CPP -shared RHS_wrap.o -o _RHS.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Mesh.i
-#$CPP -c -Wall -fpic Mesh_wrap.cxx $INCLUDE_ALL
-#$CPP -shared Mesh_wrap.o -o _Mesh.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Mesh.i
+$CPP -c -Wall -fpic Mesh_wrap.cxx $INCLUDE_ALL
+$CPP -shared Mesh_wrap.o -o _Mesh.so $LINK_ALL
 
 #swig -Wall -c++ -python -I$CAMELLIA_INCLUDE MeshFactory.i
 #$CPP -c -Wall -fpic MeshFactory_wrap.cxx $INCLUDE_ALL

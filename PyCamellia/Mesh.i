@@ -1,10 +1,13 @@
-%module Function
+%module Mesh
 %{
 #include "Mesh.h"
 %}
 
 %include "std_string.i"
+%include "std_set.i"
+%include "std_vector.i"
 
+%nodefaultctor Mesh;
 class Mesh{
 public:
   void saveToHDF5(string filename);
@@ -26,3 +29,4 @@ class MeshPtr {
 public:
   Mesh* operator->();
 };
+
