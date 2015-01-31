@@ -56,9 +56,9 @@ swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Mesh.i
 $CPP -c -Wall -fpic Mesh_wrap.cxx $INCLUDE_ALL
 $CPP -shared Mesh_wrap.o -o _Mesh.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE MeshFactory.i
-#$CPP -c -Wall -fpic MeshFactory_wrap.cxx $INCLUDE_ALL
-#$CPP -shared MeshFactory_wrap.o -o _MeshFactory.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE MeshFactory.i
+$CPP -c -Wall -fpic MeshFactory_wrap.cxx $INCLUDE_ALL
+$CPP -shared MeshFactory_wrap.o -o _MeshFactory.so $LINK_ALL
 
 #swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Solution.i
 #$CPP -c -Wall -fpic Solution_wrap.cxx $INCLUDE_ALL
