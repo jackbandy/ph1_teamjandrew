@@ -16,21 +16,21 @@ INCLUDE_ALL="-I$PYTHON_INCLUDE -I$CAMELLIA_INCLUDE -I$Trilinos_INCLUDE_DIRS -I$H
 LINK_ALL="-lpython2.7 -L$Trilinos_LIBRARY_DIRS $Trilinos_LIBRARIES_LINK_LINE -L$CAMELLIA_LIB_DIR -lCamellia"
 #echo $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Var.i
-#$CPP -c -Wall -fpic Var_wrap.cxx $INCLUDE_ALL
-#$CPP -shared Var_wrap.o -o _Var.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Var.i
+$CPP -c -Wall -fpic Var_wrap.cxx $INCLUDE_ALL
+$CPP -shared Var_wrap.o -o _Var.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE VarFactory.i
-#$CPP -c -Wall -fpic VarFactory_wrap.cxx $INCLUDE_ALL
-#$CPP -shared VarFactory_wrap.o -o _VarFactory.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE VarFactory.i
+$CPP -c -Wall -fpic VarFactory_wrap.cxx $INCLUDE_ALL
+$CPP -shared VarFactory_wrap.o -o _VarFactory.so $LINK_ALL
 
 #swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Function.i
 #$CPP -c -Wall -fpic Function_wrap.cxx $INCLUDE_ALL
 #$CPP -shared Function_wrap.o -o _Function.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE LinearTerm.i
-#$CPP -c -Wall -fpic LinearTerm_wrap.cxx $INCLUDE_ALL
-#$CPP -shared LinearTerm_wrap.o -o _LinearTerm.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE LinearTerm.i
+$CPP -c -Wall -fpic LinearTerm_wrap.cxx $INCLUDE_ALL
+$CPP -shared LinearTerm_wrap.o -o _LinearTerm.so $LINK_ALL
 
 swig -Wall -c++ -python -I$CAMELLIA_INCLUDE IP.i
 $CPP -c -Wall -fpic IP_wrap.cxx $INCLUDE_ALL
