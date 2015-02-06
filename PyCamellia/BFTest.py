@@ -8,8 +8,8 @@ import LinearTerm
 varFac = VarFactory.VarFactory()
 testVar = varFac.testVar("foo",3)
 testLT = LinearTerm.LinearTerm()
-testBF = BF.BF(varFac)
 testflux = varFac.fluxVar("foo2")
+testBF = BF.BF(varFac)
 testfluxID = testflux.ID()
 
 
