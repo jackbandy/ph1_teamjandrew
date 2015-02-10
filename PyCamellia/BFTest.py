@@ -6,11 +6,12 @@ import LinearTerm
 
 
 varFac = VarFactory.VarFactory()
-testVar = varFac.testVar("foo",3)
+fieldVar = varFac.fieldVar("fieldVar")
+testVar = varFac.testVar("testVar",3)
 testLT = LinearTerm.LinearTerm()
-testflux = varFac.fluxVar("foo2")
+testFlux = varFac.fluxVar("testFlux")
 testBF = BF.BF(varFac)
-testfluxID = testflux.ID()
+testFluxID = testFlux.ID()
 
 
 class BFTest(unittest.TestCase):
