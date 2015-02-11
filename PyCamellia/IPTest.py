@@ -7,6 +7,8 @@ import MeshFactory
 import Mesh
 import BF
 import Function
+import PoissonFormulation
+import StokesVGPFormulation
 from SpatialFilter import *
 
 
@@ -16,27 +18,30 @@ testVar = varFac.testVar("testVar",3)
 testLT = LinearTerm.LinearTerm()
 testFlux = varFac.fluxVar("testFlux")
 
-allSpace = SpatialFilter.allSpace()
-allSpace.matchesPoint([1.0,1.0])
 
 spaceDim = 2
 useConformingTraces  = True
 poissonForm = PoissonFormulation.PoissonFormulation(spaceDim, useConformingTraces)
 stokesForm = StokesVGPFormulation.StokesVGPFormulation(spaceDim, useConformingTraces)
 
-testIP = IP.IP()
-testIP.addTerm(testVar)
-stokesForm.u(1) # VarPtr for x component of velocity
-p = stokesForm.p()   # VarPtr for pressure
+#testIP.addTerm(testVar)
+#stokesForm.u(1) # VarPtr for x component of velocity
+#p = stokesForm.p()   # VarPtr for pressure
 
-phi = poissonForm.phi() # VarPtr for main, scalar-valued variable in Poisson problem
-psi = poissonForm.psi() # VarPtr for gradient of psi, vector-valued
+#phi = poissonForm.phi() # VarPtr for main, scalar-valued variable in Poisson problem
+#psi = poissonForm.psi() # VarPtr for gradient of psi, vector-valued
 
 class IPTest(unittest.TestCase):
-  """Test something"""
-  #def testadd(self):
-    #self.assertAlmostEqual(8,Adder.addNumbers(5,3),delta=1e-12)
-    #self.assertEqual(8,Adder.addNumbers(5,3))
+  """Basic Test case"""
+  def constructorOK(self):
+    testIP = IP.IP()
+    print "created instance testIP"
+  def addVarTermOK(self):
+    testIP.addTerm(testVar)
+    print "added varPtr term to testIP"
+  def addLinTermOK(self):
+    #testIP.addTerm(testVar)
+    print "added"
   
 
 # Run the tests:
