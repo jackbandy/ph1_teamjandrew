@@ -18,12 +18,22 @@ print("Before refinement, mesh has %i active elements" % mesh.numActiveElements(
 mesh.hRefine([0])
 
 print("After refinement, mesh has %i active elements" % mesh.numActiveElements())
+numGlobalDofsBefore = mesh.numGlobalDofs();
+numElementsBefore = mesh.numElements();
+
+mesh.saveToHDF5("Mesh.HDF5")
+meshLoad = MeshFactory.MeshFactory_loadFromHDF5(bf,"Mesh.HDF5")
+
+
+numGlobalDofsAfter = meshLoad.numGlobalDofs();
+numElementsAfter = meshLoad.numElements();
 
 class MeshFactoryTest(unittest.TestCase):
   """Test something"""
-  #def testadd(self):
-    #self.assertAlmostEqual(8,Adder.addNumbers(5,3),delta=1e-12)
-    #self.assertEqual(8,Adder.addNumbers(5,3))
+  def testadd(self):
+    #Tests to see if loadFromHDF5 works (assuming the saveToHDF5 works)
+    self.assertEqual(numGlobalDofsBefore,numGlobalDofsAfter)
+    self.assertEqual(numElementsBefore,numElementsAfter)
   
 
 # Run the tests:
