@@ -7,6 +7,15 @@
 %include "std_set.i"
 %include "std_vector.i"
 
+namespace std {
+  %template(IntVector) vector<int>;
+  %template(UnsignedSet) set<unsigned>;
+ }
+
+typedef unsigned GlobalIndexType;
+
+using namespace std;
+
 %nodefaultctor Mesh;
 class Mesh{
 public:

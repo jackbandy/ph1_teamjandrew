@@ -24,9 +24,9 @@ swig -Wall -c++ -python -I$CAMELLIA_INCLUDE VarFactory.i
 $CPP -c -Wall -fpic VarFactory_wrap.cxx $INCLUDE_ALL
 $CPP -shared VarFactory_wrap.o -o _VarFactory.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Function.i
-#$CPP -c -Wall -fpic Function_wrap.cxx $INCLUDE_ALL
-#$CPP -shared Function_wrap.o -o _Function.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Function.i
+$CPP -c -Wall -fpic Function_wrap.cxx $INCLUDE_ALL
+$CPP -shared Function_wrap.o -o _Function.so $LINK_ALL
 
 swig -Wall -c++ -python -I$CAMELLIA_INCLUDE LinearTerm.i
 $CPP -c -Wall -fpic LinearTerm_wrap.cxx $INCLUDE_ALL
@@ -40,17 +40,17 @@ swig -Wall -c++ -python -I$CAMELLIA_INCLUDE BF.i
 $CPP -c -Wall -fpic BF_wrap.cxx $INCLUDE_ALL
 $CPP -shared BF_wrap.o -o _BF.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE SpatialFilter.i
-#$CPP -c -Wall -fpic SpatialFilter_wrap.cxx $INCLUDE_ALL
-#$CPP -shared SpatialFilter_wrap.o -o _SpatialFilter.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE SpatialFilter.i
+$CPP -c -Wall -fpic SpatialFilter_wrap.cxx $INCLUDE_ALL
+$CPP -shared SpatialFilter_wrap.o -o _SpatialFilter.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE BC.i
-#$CPP -c -Wall -fpic BC_wrap.cxx $INCLUDE_ALL
-#$CPP -shared BC_wrap.o -o _BC.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE BC.i
+$CPP -c -Wall -fpic BC_wrap.cxx $INCLUDE_ALL
+$CPP -shared BC_wrap.o -o _BC.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE RHS.i
-#$CPP -c -Wall -fpic RHS_wrap.cxx $INCLUDE_ALL
-#$CPP -shared RHS_wrap.o -o _RHS.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE RHS.i
+$CPP -c -Wall -fpic RHS_wrap.cxx $INCLUDE_ALL
+$CPP -shared RHS_wrap.o -o _RHS.so $LINK_ALL
 
 swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Mesh.i
 $CPP -c -Wall -fpic Mesh_wrap.cxx $INCLUDE_ALL
@@ -60,11 +60,11 @@ swig -Wall -c++ -python -I$CAMELLIA_INCLUDE MeshFactory.i
 $CPP -c -Wall -fpic MeshFactory_wrap.cxx $INCLUDE_ALL
 $CPP -shared MeshFactory_wrap.o -o _MeshFactory.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Solution.i
-#$CPP -c -Wall -fpic Solution_wrap.cxx $INCLUDE_ALL
-#$CPP -shared Solution_wrap.o -o _Solution.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE Solution.i
+$CPP -c -Wall -fpic Solution_wrap.cxx $INCLUDE_ALL
+$CPP -shared Solution_wrap.o -o _Solution.so $LINK_ALL
 
-#swig -Wall -c++ -python -I$CAMELLIA_INCLUDE HDF5Exporter.i
-#$CPP -c -Wall -fpic HDF5Exporter_wrap.cxx $INCLUDE_ALL
-#$CPP -shared HDF5Exporter_wrap.o -o _HDF5Exporter.so $LINK_ALL
+swig -Wall -c++ -python -I$CAMELLIA_INCLUDE HDF5Exporter.i
+$CPP -c -Wall -fpic HDF5Exporter_wrap.cxx $INCLUDE_ALL
+$CPP -shared HDF5Exporter_wrap.o -o _HDF5Exporter.so $LINK_ALL
 
