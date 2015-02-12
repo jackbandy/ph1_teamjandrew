@@ -1,4 +1,5 @@
 import MeshFactory
+import PoissonFormulation
 import unittest
 import Mesh
 import VarFactory
@@ -18,8 +19,11 @@ class MeshFactoryTest(unittest.TestCase):
   def testrectilinearMesh(self):
     #Tests to see if we can even make a mesh
     mesh = MeshFactory.MeshFactory_rectilinearMesh(bf,vecd,veci,2)
+    #self.assertEqual(2,mesh.getDimension())
+    #print ("Number of Dimensions in Mesh: %i" % mesh.getDimension())
     print ("Number of Elements in Mesh: %i" % mesh.numElements())
     print ("Number of GlobalDofs in Mesh : %i" % mesh.numGlobalDofs())
+
   def testloadFromHDF5(self):
     #Tests to see if loadFromHDF5 works (assuming the saveToHDF5 works) 
     mesh = MeshFactory.MeshFactory_rectilinearMesh(bf,vecd,veci,2)
@@ -38,7 +42,15 @@ class MeshFactoryTest(unittest.TestCase):
 
   def testReadTriangle(self):
     #Tests to see if we can read a triangle mesh
-    triangleMesh = MeshFactory.MeshFactory_readTriangle("box.2.ele",bf,2,2)
+    #Dr. Roberts' code
+    spaceDim = 2
+    useConformingTraces  = True
+    poissonForm = PoissonFormulation.PoissonFormulation(spaceDim, useConformingTraces)
+    poissonBF = poissonForm.bf()
+
+    triangleMesh = MeshFactory.MeshFactory_readTriangle("box.2.ele",poissonBF,2,2)
+    #triangleMesh = MeshFactory.MeshFactory_readTriangle("box.2.ele",bf,2,2)
+
 # Run the tests:
 if (__name__ == '__main__'):
   unittest.main()
