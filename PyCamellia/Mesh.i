@@ -22,6 +22,7 @@ public:
   void saveToHDF5(string filename);
   int cellPolyOrder(GlobalIndexType cellID);
   set<GlobalIndexType> getActiveCellIDs();
+  int getDimension();
   void hRefine(const set<GlobalIndexType> &cellIDs);
   GlobalIndexType numActiveElements();
   GlobalIndexType numFluxDofs();
@@ -32,6 +33,8 @@ public:
   void registerSolution(SolutionPtr solution);
   vector<unsigned> vertexIndicesForCell(GlobalIndexType cellID);
   vector< vector<double> > verticesForCell(GlobalIndexType cellID);
+  void registerSolution(SolutionPtr solution);
+  void unregisterSolution(SolutionPtr solution);
 };
 
 class MeshPtr {

@@ -15,13 +15,11 @@ using namespace std;
 
 class Solution {
  public:
-  Solution(MeshPtr mesh, BCPtr bc = Teuchos::null,
-	   RHSPtr rhs = Teuchos::null, IPPtr ip = Teuchos::null );
+  Solution(MeshPtr mesh, BCPtr bc = Teuchos::null, RHSPtr rhs = Teuchos::null, IPPtr ip = Teuchos::null );
   int solve();
   void addSolution(SolutionPtr soln, double weight,
-		 bool allowEmptyCells = false, bool replaceBoundaryTerms=false);
-  void addSolution(SolutionPtr soln, double weight,
-		   set<int> varsToAdd, bool allowEmptyCells = false);
+ bool allowEmptyCells = false, bool replaceBoundaryTerms=false);
+  void addSolution(SolutionPtr soln, double weight, set<int> varsToAdd, bool allowEmptyCells = false);
   void clear();
   int cubatureEnrichmentDegree();
   void setCubatureEnrichmentDegree(int value);
@@ -43,8 +41,7 @@ class Solution {
   void saveToHDF5(std::string filename);
   void loadFromHDF5(std::string filename);
   void setUseCondensedSolve(bool value);
-  static SolutionPtr solution(MeshPtr mesh, BCPtr bc = Teuchos::null,
-                              RHSPtr rhs = Teuchos::null, IPPtr ip = Teuchos::null);
+  static SolutionPtr solution(MeshPtr mesh, BCPtr bc = Teuchos::null,RHSPtr rhs = Teuchos::null, IPPtr ip = Teuchos::null);
 };
 
 typedef Teuchos::RCP<Solution> SolutionPtr;

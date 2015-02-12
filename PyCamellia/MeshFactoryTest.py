@@ -19,7 +19,7 @@ class MeshFactoryTest(unittest.TestCase):
   def testrectilinearMesh(self):
     #Tests to see if we can even make a mesh
     mesh = MeshFactory.MeshFactory_rectilinearMesh(bf,vecd,veci,2)
-    #self.assertEqual(2,mesh.getDimension())
+    self.assertEqual(2,mesh.getDimension())
     #print ("Number of Dimensions in Mesh: %i" % mesh.getDimension())
     print ("Number of Elements in Mesh: %i" % mesh.numElements())
     print ("Number of GlobalDofs in Mesh : %i" % mesh.numGlobalDofs())
