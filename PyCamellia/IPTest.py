@@ -35,14 +35,19 @@ class IPTest(unittest.TestCase):
   """Basic Test case"""
   def constructorOK(self):
     testIP = IP.IP()
-    print "created instance testIP"
+
   def addVarTermOK(self):
     testIP.addTerm(testVar)
-    print "added varPtr term to testIP"
+
   def addLinTermOK(self):
-    #testIP.addTerm(testVar)
-    print "added"
+    testIP.addTerm(testVar)
   
+  def evaluateOK(self):
+    testmap1 = IP.map_int_FunctionPtr({fieldVar.ID(): Function.Function_xn(2)})
+    testmap2 = LinearTerm.map_int_FunctionPtr({fieldVar.ID(): Function.Function_xn(2)})
+    lntrm = testIP.evaluate(testmap1)
+    res = lntrm.evaluate(testmap2)
+    #also possible to use l2norm?
 
 # Run the tests:
 if (__name__ == '__main__'):
