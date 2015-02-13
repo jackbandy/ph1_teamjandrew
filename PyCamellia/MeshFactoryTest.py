@@ -48,7 +48,8 @@ class MeshFactoryTest(unittest.TestCase):
     poissonForm = PoissonFormulation.PoissonFormulation(spaceDim, useConformingTraces)
     poissonBF = poissonForm.bf()
 
-    triangleMesh = MeshFactory.MeshFactory_readTriangle("box.2.ele",poissonBF,2,2)
+    triangleMesh = MeshFactory.MeshFactory_readTriangle("box.2",poissonBF,2,2)
+
     #triangleMesh = MeshFactory.MeshFactory_readTriangle("box.2.ele",bf,2,2)
 
 # Run the tests:
