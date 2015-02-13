@@ -1,5 +1,6 @@
 %module Mesh
 %{
+#include "IndexType.h"
 #include "Mesh.h"
 %}
 
