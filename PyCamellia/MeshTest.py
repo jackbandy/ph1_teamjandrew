@@ -21,7 +21,17 @@ mesh = MeshFactory.MeshFactory_rectilinearMesh(bf,vecd,veci,2)
 
 class MeshTest(unittest.TestCase):
   """Test something"""
-  #def testHDF5(self):
+  def testHDF5(self):
+    gdBefore = mesh.numGlobalDofs();
+    elBefore = mesh.numElements();
+    mesh.saveToHDF5("Mesh.HDF5")
+    meshLoad = MeshFactory.MeshFactory_loadFromHDF5(bf,"Mesh.HDF5")
+    # this test assumes load works properly
+    gdAfter = meshLoad.numGlobalDofs();
+    elAfter = meshLoad.numElements();
+    self.assertEqual(gdBefore,gdAfter)
+    self.assertEqual(elBefore,elAfter)
+    print("Saved and loaded mesh via HDF5")
   def testCellPolyOrder(self):
     print("Order of first cell: %i" % mesh.cellPolyOrder(1))
     self.assertEqual(2, mesh.cellPolyOrder(0))
@@ -54,11 +64,14 @@ class MeshTest(unittest.TestCase):
     mesh.pRefine([0])
     after = mesh.cellPolyOrder(0)
     print ("after refine: %i" % after)
-    self.assertGreater(after,(before+1))
+    self.assertEqual(after,(before+1))
 
-  #def testRegister(self):
-
-  #def testVertices(self):
+  def testRegister(self):
+    soln = Solution.Solution_solution(mesh)
+    mesh.registerSolution(soln)
+    print ("Successfully registered test solution")
+    mesh.unregisterSolution(soln)
+    print ("Successfully unregistered test solution")#testVertices(self):
 
 
 # Run the tests:

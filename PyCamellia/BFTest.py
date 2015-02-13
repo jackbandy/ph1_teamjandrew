@@ -17,7 +17,7 @@ fieldVar = varFac.fieldVar("fieldVar")
 testVar1 = varFac.testVar("testVar",Var.HGRAD)
 testVar2 = varFac.testVar("testVar2",Var.HGRAD)
 
-lttestVars = testVar1 + testVar2
+lttestVars = 1.0 * testVar1 
 lttrial = 1.0 * fieldVar 
 
 testFlux = varFac.fluxVar("testFlux")
@@ -34,6 +34,7 @@ print soln
 
 spaceDim = 2
 function1 = Function.Function_xn()
+print dir(function1)
 useConformingTraces  = True
 poissonForm = PoissonFormulation.PoissonFormulation(spaceDim, useConformingTraces)
 stokesForm = StokesVGPFormulation.StokesVGPFormulation(spaceDim, useConformingTraces)
@@ -63,6 +64,8 @@ class BFTest(unittest.TestCase):
     bf.addTerm(lttrial,testVar1)
     soln.projectOntoMesh({fieldVar.ID() : function1})
     ltsoln = bf.testFunctional(soln)
+    function2  = ltsoln.evaluate({testVar1.ID() : function1})
+    self.asserEqual(function2,function1.evaluate(1.0,1.0))
  # def testGraphNorm(self):
    # IPPtr = bf.graphNorm()
     
