@@ -12,16 +12,28 @@ import Mesh
 import MeshFactory
 
 varFac = VarFactory.VarFactory()
+
 fieldVar = varFac.fieldVar("fieldVar")
-testVar1 = varFac.testVar("testVar",3)
-testVar2 = varFac.testVar("testVar2",3)
+testVar1 = varFac.testVar("testVar",Var.HGRAD)
+testVar2 = varFac.testVar("testVar2",Var.HGRAD)
+
 lttestVars = testVar1 + testVar2
+lttrial = 1.0 * fieldVar 
+
 testFlux = varFac.fluxVar("testFlux")
 testFluxID = testFlux.ID()
+
 bf = BF.BF_bf(varFac)
+
+vecd = MeshFactory.vectord(2,1.0)
+veci = MeshFactory.vectori(2,1)
+mesh = MeshFactory.MeshFactory_rectilinearMesh(bf,vecd,veci,2)
+soln = Solution.Solution_solution(mesh)
+
+print soln
+
 spaceDim = 2
 function1 = Function.Function_xn()
-ltTrial =  function1 * fieldVar
 useConformingTraces  = True
 poissonForm = PoissonFormulation.PoissonFormulation(spaceDim, useConformingTraces)
 stokesForm = StokesVGPFormulation.StokesVGPFormulation(spaceDim, useConformingTraces)
@@ -45,10 +57,12 @@ class BFTest(unittest.TestCase):
     self.assertTrue(bf.isFluxOrTrace(testFluxID))
 
   def testAddTerm(self):
-    bf.addTerm(LT,LT)
-    bf.addTerm(u1,LT)
-    bf.addTerm(phi,psi)
-    bf.addTerm(LT,p)
+    bf.addTerm(lttrial,lttestVars)
+    bf.addTerm(u1,lttestVars)
+    bf.addTerm(fieldVar,testVar1)
+    bf.addTerm(lttrial,testVar1)
+    soln.projectOntoMesh({fieldVar.ID() : function1})
+    ltsoln = bf.testFunctional(soln)
  # def testGraphNorm(self):
    # IPPtr = bf.graphNorm()
     
